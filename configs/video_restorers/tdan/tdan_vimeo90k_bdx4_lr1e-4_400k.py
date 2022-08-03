@@ -62,7 +62,7 @@ demo_pipeline = [
     dict(type='PackEditInputs')
 ]
 
-data_root = 'openmmlab:s3://openmmlab/datasets/editing'
+data_root = 'data'
 save_dir = 'sh1984:s3://ysli/tdan'
 
 train_dataloader = dict(
@@ -106,10 +106,10 @@ test_dataloader = dict(
     sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(
         type='BasicFramesDataset',
-        metainfo=dict(dataset_type='spmcs', task_name='vsr'),
-        data_root=f'{data_root}/SPMCS',
+        metainfo=dict(dataset_type='vid4', task_name='vsr'),
+        data_root=f'{data_root}/Vid4',
         data_prefix=dict(img='BDx4', gt='GT'),
-        ann_file='meta_info_SPMCS_GT.txt',
+        ann_file='meta_info_Vid4_GT.txt',
         depth=2,
         num_input_frames=5,
         pipeline=val_pipeline))

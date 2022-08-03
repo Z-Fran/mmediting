@@ -8,25 +8,8 @@ scale = 8
 model = dict(
     type='SRGAN',
     generator=dict(
-        type='GLEANStyleGANv2',
-        in_size=32,
-        out_size=256,
-        style_channels=512,
-        init_cfg=dict(
-            type='Pretrained',
-            checkpoint='http://download.openmmlab.com/mmgen/stylegan2/'
-            'official_weights/stylegan2-cat-config-f-official_20210327'
-            '_172444-15bc485b.pth',
-            prefix='generator_ema')),
-    discriminator=dict(
-        type='StyleGANv2Discriminator',
-        in_size=256,
-        init_cfg=dict(
-            type='Pretrained',
-            checkpoint='http://download.openmmlab.com/mmgen/stylegan2/'
-            'official_weights/stylegan2-cat-config-f-official_20210327'
-            '_172444-15bc485b.pth',
-            prefix='discriminator')),
+        type='GLEANStyleGANv2', in_size=32, out_size=256, style_channels=512),
+    discriminator=dict(type='StyleGANv2Discriminator', in_size=256),
     pixel_loss=dict(type='MSELoss', loss_weight=1.0, reduction='mean'),
     perceptual_loss=dict(
         type='PerceptualLoss',
@@ -110,9 +93,9 @@ val_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         metainfo=dict(dataset_type='cat', task_name='sisr'),
-        data_root='data/cat_test',
+        data_root='data/cat',
         data_prefix=dict(img='BIx8_down', gt='GT'),
-        ann_file='meta_info_Cat100_GT.txt',
+        ann_file='meta_info_LSUNcat_GT.txt',
         pipeline=test_pipeline))
 
 test_dataloader = val_dataloader

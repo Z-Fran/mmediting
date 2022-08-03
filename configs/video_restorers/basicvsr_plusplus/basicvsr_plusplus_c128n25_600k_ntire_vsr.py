@@ -49,7 +49,7 @@ test_dataloader = dict(
         metainfo=dict(dataset_type='reds_official', task_name='vsr'),
         data_root='data/REDS',
         data_prefix=dict(img='train_sharp_bicubic/X4', gt='train_sharp'),
-        ann_file='meta_info_official_val.txt',
+        ann_file='meta_info_reds4_val.txt',
         depth=1,
         num_input_frames=100,
         fixed_seq_len=100,

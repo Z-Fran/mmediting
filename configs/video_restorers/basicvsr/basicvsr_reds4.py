@@ -57,7 +57,7 @@ demo_pipeline = [
     dict(type='PackEditInputs')
 ]
 
-data_root = 'openmmlab:s3://openmmlab/datasets/editing/REDS'
+data_root = 'data/REDS'
 tmp_root = '/mnt/lustre/liyinshuo.vendor/00-openmmlab/mmediting2.0/data/REDS/'
 
 train_dataloader = dict(

@@ -7,14 +7,14 @@ model = dict(train_cfg=dict(
 
 input_shape = (512, 512)
 
-mask_root = 'data/pconv_mask'
+mask_root = 'data/masks'
 train_pipeline = [
     dict(type='LoadImageFromFile', key='gt', channel_order='rgb'),
     dict(
         type='LoadMask',
         mask_mode='set',
         mask_config=dict(
-            mask_list_file=f'{mask_root}/train_mask_list.txt',
+            mask_list_file=f'{mask_root}/list.txt',
             prefix=mask_root,
             io_backend='disk',
             flag='unchanged',
@@ -50,7 +50,7 @@ test_pipeline = [
         type='LoadMask',
         mask_mode='set',
         mask_config=dict(
-            mask_list_file=f'{mask_root}/mask_0.5-0.6_list.txt',
+            mask_list_file=f'{mask_root}/list.txt',
             prefix=mask_root,
             io_backend='disk',
             color_type='unchanged',

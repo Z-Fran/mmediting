@@ -161,7 +161,7 @@ demo_pipeline = [
 
 # dataset settings
 dataset_type = 'BasicImageDataset'
-data_root = 'openmmlab:s3://openmmlab/datasets/editing/CUFED'
+data_root = 'data/'
 save_dir = 'sh1984:s3://ysli/ttsr'
 
 train_dataloader = dict(

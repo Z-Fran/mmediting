@@ -81,7 +81,7 @@ test_pipeline = valid_pipeline
 
 # dataset settings
 dataset_type = 'BasicImageDataset'
-data_root = 'openmmlab:s3://openmmlab/datasets/editing/CelebA-HQ'
+data_root = 'data/CelebA-HQ'
 save_dir = 'sh1984:s3://ysli/dic'
 
 train_dataloader = dict(
@@ -93,7 +93,7 @@ train_dataloader = dict(
         type=dataset_type,
         metainfo=dict(dataset_type='celeba', task_name='fsr'),
         data_root=data_root,
-        data_prefix=dict(gt='train_256/all_256'),
+        data_prefix=dict(gt=''),
         pipeline=train_pipeline))
 
 val_dataloader = dict(
@@ -105,7 +105,7 @@ val_dataloader = dict(
         type=dataset_type,
         metainfo=dict(dataset_type='celeba', task_name='fsr'),
         data_root=data_root,
-        data_prefix=dict(gt='test_256/all_256'),
+        data_prefix=dict(gt=''),
         pipeline=test_pipeline))
 
 test_dataloader = val_dataloader

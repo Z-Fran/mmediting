@@ -88,7 +88,7 @@ demo_pipeline = [
 # dataset settings
 train_dataset_type = 'BasicFramesDataset'
 val_dataset_type = 'BasicFramesDataset'
-data_root = 'openmmlab:s3://openmmlab/datasets/editing/vimeo90k'
+data_root = 'data'
 save_dir = 'sh1984:s3://ysli/flavr'
 
 train_dataloader = dict(
@@ -98,7 +98,7 @@ train_dataloader = dict(
     sampler=dict(type='InfiniteSampler', shuffle=True),
     dataset=dict(
         type=train_dataset_type,
-        ann_file='txt/sep_trainlist.txt',
+        ann_file='sep_trainlist.txt',
         metainfo=dict(dataset_type='vimeo90k_septenary', task_name='vfi'),
         data_root=data_root,
         data_prefix=dict(img='GT', gt='GT'),
@@ -114,7 +114,7 @@ val_dataloader = dict(
     sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(
         type=val_dataset_type,
-        ann_file='txt/sep_testlist.txt',
+        ann_file='1.txt',
         metainfo=dict(dataset_type='vimeo90k_septenary', task_name='vfi'),
         data_root=data_root,
         data_prefix=dict(img='GT', gt='GT'),

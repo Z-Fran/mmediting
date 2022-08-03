@@ -18,15 +18,7 @@ model = dict(
             'official_weights/stylegan2-cat-config-f-official_20210327'
             '_172444-15bc485b.pth',
             prefix='generator_ema')),
-    discriminator=dict(
-        type='StyleGAN2Discriminator',
-        in_size=256,
-        init_cfg=dict(
-            type='Pretrained',
-            checkpoint='http://download.openmmlab.com/mmgen/stylegan2/'
-            'official_weights/stylegan2-cat-config-f-official_20210327'
-            '_172444-15bc485b.pth',
-            prefix='discriminator')),
+    discriminator=dict(type='StyleGANv2Discriminator', in_size=256),
     pixel_loss=dict(type='MSELoss', loss_weight=1.0, reduction='mean'),
     perceptual_loss=dict(
         type='PerceptualLoss',

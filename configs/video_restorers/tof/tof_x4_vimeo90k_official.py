@@ -42,7 +42,7 @@ demo_pipeline = [
     dict(type='PackEditInputs')
 ]
 
-data_root = 'openmmlab:s3://openmmlab/datasets/editing/Vid4'
+data_root = 'data/Vid4'
 
 val_dataloader = dict(
     num_workers=1,
@@ -53,7 +53,7 @@ val_dataloader = dict(
         type='BasicFramesDataset',
         metainfo=dict(dataset_type='vid4', task_name='vsr'),
         data_root=data_root,
-        data_prefix=dict(img='BIx4up_direct', gt='GT'),
+        data_prefix=dict(img='BIx4', gt='GT'),
         ann_file='meta_info_Vid4_GT.txt',
         depth=2,
         num_input_frames=7,
