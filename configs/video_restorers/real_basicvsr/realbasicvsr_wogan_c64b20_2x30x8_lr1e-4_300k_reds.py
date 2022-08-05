@@ -218,7 +218,7 @@ test_pipeline = [
 
 data_root = 'data'
 save_dir = work_dir
-# data_root = 'openmmlab:s3://openmmlab/datasets/editing'
+data_root = 'openmmlab:s3://openmmlab/datasets/editing'
 # save_dir = 'sh1984:s3://openmmlab/editing'
 
 train_dataloader = dict(
@@ -230,7 +230,7 @@ train_dataloader = dict(
         type='BasicFramesDataset',
         metainfo=dict(dataset_type='reds', task_name='vsr'),
         data_root=f'{data_root}/REDS',
-        data_prefix=dict(img='train_sharp_sub', gt='train_sharp_sub'),
+        data_prefix=dict(img='train_sharp', gt='train_sharp'),
         depth=1,
         num_input_frames=15,
         pipeline=train_pipeline))
@@ -243,8 +243,8 @@ val_dataloader = dict(
     dataset=dict(
         type='BasicFramesDataset',
         metainfo=dict(dataset_type='udm10', task_name='vsr'),
-        data_root=f'{data_root}/UDM10',
-        data_prefix=dict(img='BIx4', gt='GT'),
+        data_root='data/udm10',
+        data_prefix=dict(img='blur4', gt='truth'),
         pipeline=val_pipeline))
 
 test_dataloader = dict(
@@ -255,7 +255,7 @@ test_dataloader = dict(
     dataset=dict(
         type='BasicFramesDataset',
         metainfo=dict(dataset_type='video_lq', task_name='vsr'),
-        data_root=f'{data_root}/VideoLQ',
+        data_root='data/VideoLQ/Input',
         data_prefix=dict(img='', gt=''),
         pipeline=val_pipeline))
 
@@ -293,3 +293,8 @@ default_hooks = dict(
     param_scheduler=dict(type='ParamSchedulerHook'),
     sampler_seed=dict(type='DistSamplerSeedHook'),
 )
+
+model_wrapper_cfg = dict(
+    type='MMSeparateDistributedDataParallel',
+    broadcast_buffers=False,
+    find_unused_parameters=False)
